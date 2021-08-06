@@ -1,10 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
 
+// Componentes
+import "./components/NavBar/NavBar";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <NavBar></NavBar>
+      <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>I don´t know what i´m doing!!</p>
         <a
@@ -15,7 +19,7 @@ function App() {
         >
           Go to Site
         </a>
-      </header>
+      </div>
     </div>
   );
 }
