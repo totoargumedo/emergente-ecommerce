@@ -1,41 +1,32 @@
 import React from "react";
-
+import "./NavBar.css";
+import logo from "./logo-navbar.svg";
 // Navbar del ecommerce
 
 const NavBar = () => {
   return (
-    <div>
+    <div className="NavBar">
       {/* logo del ecommerce */}
-      <a className="navbrand headerNavbar__logo" href="index.html">
-        <img
-          src="images/logo-navbar.svg"
-          width="130"
-          height="130"
-          alt="Logo Emergente"
-        />
+      <a className="logoNavBar" href="index.html">
+        <img src={logo} alt="Logo Emergente" />
       </a>
       {/* links navegables */}
-      <div
-        className="collapse navbar-collapse d-md-flex justify-content-end headerNavbar__navegacion"
-        id="navbarSecciones"
-      >
-        <div className="navbar-nav navbar-nav-scroll headerNavbar__navegacion__secciones">
-          <a className="nav-item nav-link active" href="index.html">
-            Inicio
-          </a>
-          <a className="nav-item nav-link" href="servicios.html">
-            Servicios
-          </a>
-          <a className="nav-item nav-link" href="nosotros.html">
-            Nosotros
-          </a>
-          <a className="nav-item nav-link" href="novedades.html">
-            Novedades
-          </a>
-          <a className="nav-item nav-link" href="contacto.html">
-            Contacto
-          </a>
-        </div>
+      <div className="linksNavBar" id="navbarSecciones">
+        <a className="itemNavBar" href="index.html">
+          Inicio
+        </a>
+        <a className="itemNavBar" href="index.html">
+          Servicios
+        </a>
+        <a className="itemNavBar" href="index.html">
+          Nosotros
+        </a>
+        <a className="itemNavBar--active" href="index.html">
+          Tienda
+        </a>
+        <a className="itemNavBar" href="index.html">
+          Contacto
+        </a>
       </div>
     </div>
   );
