@@ -1,9 +1,13 @@
 import React from "react";
 import "./NavBar.css";
 import logo from "./logo-navbar.svg";
+
+// Componentes
+import { CartWidget } from "../CartWidget/CartWidget";
+
 // Navbar del ecommerce
 
-const NavBar = () => {
+export const NavBar = () => {
   return (
     <div className="NavBar">
       {/* logo del ecommerce */}
@@ -27,9 +31,8 @@ const NavBar = () => {
         <a className="itemNavBar" href="index.html">
           Contacto
         </a>
+        <CartWidget />
       </div>
     </div>
   );
 };
-
-export default NavBar;
