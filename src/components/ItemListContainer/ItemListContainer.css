@@ -1,10 +1,12 @@
 .listMain {
   display: flex;
   flex-flow: column nowrap;
-  background-color: black;
+  background-color: #34ffc8;
   padding: 5vh;
 }
 
 .welcome {
-  color: #34ffc8;
+  color: whitesmoke;
+  padding: 2vh;
+  background-color: #001b38;
 }

@@ -1,6 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
 
+// // LIBRERIAS
+// import "semantic-ui-css/semantic.min.css";
+
 // Componentes
 import { NavBar } from "./components/NavBar/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
