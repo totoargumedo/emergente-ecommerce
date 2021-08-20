@@ -2,6 +2,7 @@ import React from "react";
 
 // LIBRERIAS
 import { Button, Icon } from "semantic-ui-react";
+import "./ItemCount.css";
 
 export const ItemCount = () => {
   const [stockNumber, setStockNumber] = React.useState(0);
@@ -18,16 +19,15 @@ export const ItemCount = () => {
   };
 
   return (
-    <div>
-      <h3>Cantidad</h3>
-      <Button animated onClick={substractNumber}>
+    <div className="ItemCount">
+      <Button animated onClick={substractNumber} size="tiny">
         <Button.Content visible>-</Button.Content>
         <Button.Content hidden>
           <Icon name="arrow left" />
         </Button.Content>
       </Button>
       <h4>{stockNumber}</h4>
-      <Button animated onClick={addNumber}>
+      <Button animated onClick={addNumber} size="tiny">
         <Button.Content visible>+</Button.Content>
         <Button.Content hidden>
           <Icon name="arrow right" />

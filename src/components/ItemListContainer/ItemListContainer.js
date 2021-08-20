@@ -1,8 +1,7 @@
 import React from "react";
 
 // COMPONENTES
-import ItemOptions from "../ItemOptions/ItemOptions";
-import { ItemCount } from "../ItemCount/ItemCount";
+import { ItemList } from "../ItemList/ItemList";
 // LIBRERIAS
 import "./ItemListContainer.css";
 
@@ -11,8 +10,7 @@ export const ItemListContainer = ({ hello, description }) => {
     <div className="listMain">
       <h1 className="welcome">{hello}</h1>
       <p>{description}</p>
-      <ItemOptions />
-      <ItemCount />
+      <ItemList />
     </div>
   );
 };
