@@ -5,12 +5,16 @@ import { Button, Icon } from "semantic-ui-react";
 
 export const ItemCount = () => {
   const [stockNumber, setStockNumber] = React.useState(0);
-
+  const stockMax = 10;
   const addNumber = () => {
-    setStockNumber(stockNumber + 1);
+    if (stockNumber >= 0 && stockNumber <= stockMax - 1) {
+      setStockNumber(stockNumber + 1);
+    }
   };
   const substractNumber = () => {
-    setStockNumber(stockNumber - 1);
+    if (stockNumber >= 1 && stockNumber <= stockMax) {
+      setStockNumber(stockNumber - 1);
+    }
   };
 
   return (
