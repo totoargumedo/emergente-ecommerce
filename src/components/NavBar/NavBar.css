@@ -1,7 +1,7 @@
 .NavBar {
   background-color: #001b38;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   min-height: 20vh;
   justify-content: space-between;
 }

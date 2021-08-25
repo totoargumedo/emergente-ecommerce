@@ -9,7 +9,9 @@ import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 export const CartWidget = () => {
   return (
-    <FontAwesomeIcon className="headerWidget fa-2x" icon={faCartArrowDown} />
+    <div className="headerWidget">
+      <FontAwesomeIcon icon={faCartArrowDown} />;
+    </div>
   );
 };
 
