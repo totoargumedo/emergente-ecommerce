@@ -7,4 +7,5 @@
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
+  min-height: 40vh;
 }

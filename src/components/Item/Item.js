@@ -8,13 +8,13 @@ import "./Item.css";
 import { ItemCount } from "../ItemCount/ItemCount";
 import ItemOptions from "../ItemOptions/ItemOptions";
 
-export const Item = ({ data }) => (
+export const Item = ({ data, url }) => (
   <Card className="Item">
     <Card.Content>
       <Image floated="right" size="mini" src={data.image} />
-      <Card.Header>{data.username}</Card.Header>
-      <Card.Meta>{data.name}</Card.Meta>
-      <Card.Description>{data.company.catchPhrase}</Card.Description>
+      <Card.Header>{data.name}</Card.Header>
+      <Card.Meta>{data.index}</Card.Meta>
+      <Card.Description>{data.url}</Card.Description>
     </Card.Content>
     <Card.Content extra>
       <ItemCount />
