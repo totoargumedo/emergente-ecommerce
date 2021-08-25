@@ -24,7 +24,7 @@ export const Item = ({ data, url }) => (
         <Button basic color="orange">
           AGREGAR
         </Button>
-        <Button basic color="green">
+        <Button basic color="green" on="">
           MAS INFO
         </Button>
       </div>
