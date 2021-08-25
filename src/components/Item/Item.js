@@ -7,6 +7,7 @@ import "./Item.css";
 // COMPONENTES
 import { ItemCount } from "../ItemCount/ItemCount";
 import ItemOptions from "../ItemOptions/ItemOptions";
+import { ItemDetailContainer } from "../ItemDetailContainer/ItemDetailContainer";
 
 export const Item = ({ data, url }) => (
   <Card className="Item">
@@ -27,6 +28,7 @@ export const Item = ({ data, url }) => (
           MAS INFO
         </Button>
       </div>
+      <ItemDetailContainer url={url} />
     </Card.Content>
   </Card>
 );

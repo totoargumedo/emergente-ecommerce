@@ -9,7 +9,7 @@ import { LoaderSpinner } from "../LoaderSpinner/LoaderSpinner";
 
 export const ItemList = () => {
   const [items, setItems] = useState([]);
-  const apiDungeon = "https://www.dnd5eapi.co/api/monsters";
+  const apiDungeon = "https://www.dnd5eapi.co/api/monsters/";
   const [gettingData, setGettingData] = useState(true);
 
   useEffect(() => {
