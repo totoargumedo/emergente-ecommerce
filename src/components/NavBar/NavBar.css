@@ -19,7 +19,8 @@
 }
 .itemNavBar {
   padding: 5vh;
-  color: #534f4f;
+  font-size: 1.2rem;
+  color: whitesmoke;
   text-decoration: none;
 }
 .itemNavBar--active {

@@ -1,36 +1,36 @@
 import React from "react";
 import "./NavBar.css";
 import logo from "./logo-navbar.svg";
+import { Link } from "react-router-dom";
 
 // Componentes
 import { CartWidget } from "../CartWidget/CartWidget";
 
+// P
 // Navbar del ecommerce
 
 export const NavBar = () => {
   return (
     <div className="NavBar">
       {/* logo del ecommerce */}
-      <a className="logoNavBar" href="index.html">
+      <Link className="logoNavBar" to="/">
         <img src={logo} alt="Logo Emergente" />
-      </a>
+      </Link>
       {/* links navegables */}
       <div className="linksNavBar" id="navbarSecciones">
-        <a className="itemNavBar" href="index.html">
+        <Link className="itemNavBar" to="/">
           Inicio
-        </a>
-        <a className="itemNavBar" href="index.html">
-          Servicios
-        </a>
-        <a className="itemNavBar" href="index.html">
+        </Link>
+        <Link className="itemNavBar" to="/nosotros">
           Nosotros
-        </a>
-        <a className="itemNavBar--active" href="index.html">
+        </Link>
+        <Link className="itemNavBar" to="/tienda">
           Tienda
-        </a>
-        <a className="itemNavBar" href="index.html">
+        </Link>
+        <Link className="itemNavBar" to="/contacto">
           Contacto
-        </a>
+        </Link>
+
         <CartWidget />
       </div>
     </div>

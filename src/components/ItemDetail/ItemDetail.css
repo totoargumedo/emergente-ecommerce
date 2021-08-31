@@ -1,3 +1,10 @@
+.itemDetail {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh;
+}
 .monsterScores {
   display: flex;
   flex-direction: column;

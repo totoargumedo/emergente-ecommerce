@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 // LIBRERIAS
 import "./ItemList.css";
+import { Link } from "react-router-dom";
 
 // COMPONENTES
 import { Item } from "../Item/Item";
@@ -18,23 +19,19 @@ export const ItemList = () => {
       .then((respuesta) => setItems(respuesta.results));
     setTimeout(() => {
       setGettingData(false);
-    }, 3000);
+    }, 1000);
   }, []);
   return (
     <div>
-      <h1>GALERIA RANDOM</h1>
-      <p>API usada: http://www.dnd5eapi.co/</p>
       {gettingData ? (
         <LoaderSpinner />
       ) : (
         <div className="ItemList">
-          {items.slice(0, 12).map((item) => {
+          {items.map((item) => {
             return (
-              <Item
-                key={item.index}
-                data={item}
-                url={apiDungeon + item.index}
-              />
+              <Link to={`/monster/${item.index}`}>
+                <Item key={item.index} data={item} />
+              </Link>
             );
           })}
         </div>

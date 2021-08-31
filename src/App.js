@@ -1,35 +1,33 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
 
 // // LIBRERIAS
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 // import "semantic-ui-css/semantic.min.css";
+
+// PAGES
+import Home from "./pages/Home/Home";
+import Nosotros from "./pages/Nosotros/Nosotros";
+import { Tienda } from "./pages/Tienda/Tienda";
+import Contacto from "./pages/Contacto/Contacto";
+import { ItemDetailContainer } from "./pages/ItemDetailContainer/ItemDetailContainer";
 
 // Componentes
 import { NavBar } from "./components/NavBar/NavBar";
-import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <NavBar />
-      <ItemListContainer
-        hello="Welcome to the Store"
-        description="This site will have our catalog soon"
-      />
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>I don´t know what i´m doing!!</p>
-        <a
-          className="App-link"
-          href="https://emergentex.000webhostapp.com/index.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Go to Site
-        </a>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/nosotros" component={Nosotros} />
+          <Route path="/tienda" component={Tienda} />
+          <Route path="/contacto" component={Contacto} />
+          <Route path="/monster/:index" component={ItemDetailContainer} />
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
-}
-
-export default App;
+};

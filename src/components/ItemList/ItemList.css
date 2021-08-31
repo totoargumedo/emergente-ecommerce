@@ -1,11 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-}
 .ItemList {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: end;
+  column-gap: 60px;
+  row-gap: 20px;
   min-height: 40vh;
 }
