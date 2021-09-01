@@ -7,7 +7,7 @@ import axios from "axios";
 // COMPONENTES
 import { ItemDetail } from "../../components/ItemDetail/ItemDetail";
 
-export const ItemDetailContainer = ({ match, url }) => {
+export const ItemDetailContainer = ({ match }) => {
   const apiDungeon = "https://www.dnd5eapi.co/api/monsters/";
   const itemID = match.params.index;
   const [itemDetail, setItemDetail] = useState({});

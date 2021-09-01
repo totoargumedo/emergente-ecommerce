@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
 // LIBRERIAS
 import "./ItemDetail.css";
-import { Tab, Button, Icon } from "semantic-ui-react";
+import { Tab, Button, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 // COMPONENTES
 import { ItemCount } from "../ItemCount/ItemCount";
 import ItemOptions from "../ItemOptions/ItemOptions";
 
+// ASSETS
+import img1 from "../../assets/itemExample1.jpg";
+import img2 from "../../assets/itemExample2.jpg";
+
 export const ItemDetail = ({ data }) => {
+  // Estado y eventos de cantidad de items
+  const [itemNumber, setItemNumber] = React.useState(0);
+
+  const onAdd = () => {
+    setItemNumber(itemNumber + 1);
+  };
+  const onSubstract = () => {
+    if (itemNumber >= 1) {
+      setItemNumber(itemNumber - 1);
+    }
+  };
+  // Imagen fija del item (la api que uso no tiene imagenes asique improvise)
+  const [imgExample, setImgExample] = useState(true);
+
+  const handleThumbnail = () => {
+    setImgExample(!imgExample);
+  };
+  // Evento Terminar compra
+  const [addItemsToCart, setAddItemsToCart] = useState(false);
+
+  const onAddItems = () => {
+    setAddItemsToCart(true);
+  };
+
+  // Paneles de informacion
   const panes = [
     {
       menuItem: "Puntajes",
@@ -49,19 +78,46 @@ export const ItemDetail = ({ data }) => {
       ),
     },
   ];
+  // RENDER
   return (
     <div className="itemDetail">
+      <Image
+        floated="right"
+        size="small"
+        src={imgExample ? img1 : img2}
+        onMouseEnter={handleThumbnail}
+        onMouseLeave={handleThumbnail}
+      />
       <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-      <ItemCount />
+      <ItemCount add={onAdd} substract={onSubstract} quantity={itemNumber} />
       <ItemOptions />
-      <Link to="/tienda">
-        <Button animated size="tiny" color="red">
-          <Button.Content visible>Back</Button.Content>
+      {addItemsToCart && <h3>Se agregaron {itemNumber} unidades al carrito</h3>}
+      <div className="itemDetailButtons">
+        <Link to="/tienda">
+          <Button animated size="tiny" color="red">
+            <Button.Content visible>Back</Button.Content>
+            <Button.Content hidden>
+              <Icon name="arrow left" />
+            </Button.Content>
+          </Button>
+        </Link>
+        <Button animated size="tiny" color="blue" onClick={onAddItems}>
+          <Button.Content visible>Agregar</Button.Content>
           <Button.Content hidden>
-            <Icon name="arrow left" />
+            <Icon name="plus" />
           </Button.Content>
         </Button>
-      </Link>
+        {addItemsToCart && (
+          <Link to="/cart">
+            <Button animated size="tiny" color="orange">
+              <Button.Content visible>Terminar</Button.Content>
+              <Button.Content hidden>
+                <Icon name="cart" />
+              </Button.Content>
+            </Button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

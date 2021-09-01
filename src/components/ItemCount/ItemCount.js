@@ -4,30 +4,17 @@ import React from "react";
 import { Button, Icon } from "semantic-ui-react";
 import "./ItemCount.css";
 
-export const ItemCount = () => {
-  const [stockNumber, setStockNumber] = React.useState(0);
-  const stockMax = 10;
-  const addNumber = () => {
-    if (stockNumber >= 0 && stockNumber <= stockMax - 1) {
-      setStockNumber(stockNumber + 1);
-    }
-  };
-  const substractNumber = () => {
-    if (stockNumber >= 1 && stockNumber <= stockMax) {
-      setStockNumber(stockNumber - 1);
-    }
-  };
-
+export const ItemCount = ({ add, substract, quantity }) => {
   return (
     <div className="ItemCount">
-      <Button animated onClick={substractNumber} size="tiny">
+      <Button animated onClick={substract} size="tiny">
         <Button.Content visible>-</Button.Content>
         <Button.Content hidden>
           <Icon name="arrow left" />
         </Button.Content>
       </Button>
-      <h4>{stockNumber}</h4>
-      <Button animated onClick={addNumber} size="tiny">
+      <h4>{quantity}</h4>
+      <Button animated onClick={add} size="tiny">
         <Button.Content visible>+</Button.Content>
         <Button.Content hidden>
           <Icon name="arrow right" />

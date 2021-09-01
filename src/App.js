@@ -11,6 +11,7 @@ import Nosotros from "./pages/Nosotros/Nosotros";
 import { Tienda } from "./pages/Tienda/Tienda";
 import Contacto from "./pages/Contacto/Contacto";
 import { ItemDetailContainer } from "./pages/ItemDetailContainer/ItemDetailContainer";
+import CartContainer from "./pages/CartContainer/CartContainer";
 
 // Componentes
 import { NavBar } from "./components/NavBar/NavBar";
@@ -26,6 +27,7 @@ export const App = () => {
           <Route path="/tienda" component={Tienda} />
           <Route path="/contacto" component={Contacto} />
           <Route path="/monster/:index" component={ItemDetailContainer} />
+          <Route path="/cart" component={CartContainer} />
         </Switch>
       </div>
     </Router>

@@ -12,3 +12,14 @@
   justify-content: center;
   text-align: left;
 }
+.itemDetailButtons {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+h3 {
+  background-color: grey;
+  color: blanchedalmond;
+  padding: 5vh;
+  border-radius: 5px;
+}

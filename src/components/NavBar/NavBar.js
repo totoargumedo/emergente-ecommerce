@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 // Componentes
 import { CartWidget } from "../CartWidget/CartWidget";
+import ItemSearch from "../ItemSearch/ItemSearch";
 
 // P
 // Navbar del ecommerce
@@ -32,6 +33,7 @@ export const NavBar = () => {
         </Link>
 
         <CartWidget />
+        <ItemSearch />
       </div>
     </div>
   );

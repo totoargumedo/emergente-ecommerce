@@ -5,7 +5,7 @@ import "./ItemList.css";
 import { Link } from "react-router-dom";
 
 // COMPONENTES
-import { Item } from "../Item/Item";
+import Item from "../Item/Item";
 import { LoaderSpinner } from "../LoaderSpinner/LoaderSpinner";
 
 export const ItemList = () => {
