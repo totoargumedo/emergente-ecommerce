@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // LIBRERIAS
 import "./ItemDetail.css";
@@ -13,7 +13,12 @@ import ItemOptions from "../ItemOptions/ItemOptions";
 import img1 from "../../assets/itemExample1.jpg";
 import img2 from "../../assets/itemExample2.jpg";
 
+// PROVIDER
+import { CartContext } from "../../context/CartContext";
+
 export const ItemDetail = ({ data }) => {
+  const { cart, addToCart } = useContext(CartContext);
+  console.log(cart);
   // Estado y eventos de cantidad de items
   const [itemNumber, setItemNumber] = React.useState(0);
 
@@ -36,6 +41,7 @@ export const ItemDetail = ({ data }) => {
 
   const onAddItems = () => {
     setAddItemsToCart(true);
+    addToCart(data, itemNumber);
   };
 
   // Paneles de informacion
