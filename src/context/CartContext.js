@@ -7,7 +7,6 @@ export const CartContext = createContext();
 
 export const CartProvider = ({children}) =>{
     const [cart, setCart] = useState([]);
-
     // funcion para comprobar si el elemento ya existe
     const isInCart = (index) => cart.some((item) => item.index === index)
 
@@ -30,7 +29,8 @@ export const CartProvider = ({children}) =>{
     // funcion eliminar item
     const removeItem = (index) =>{
         setCart(cart.filter((e)=>{
-            e.item.index =! index
+            return(e.item.index =! index)
+            
         }))
     }
     

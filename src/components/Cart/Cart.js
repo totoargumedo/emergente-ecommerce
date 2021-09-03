@@ -1,30 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 
 // LIBRERIAS
 import "./Cart.css";
 import { Button } from "semantic-ui-react";
 
-// PROVIDER
-import { CartContext } from "../../context/CartContext";
-
 // COMPONENTES
 import CartItem from "../CartItem/CartItem";
 
-const Cart = () => {
-  const { cart, removeItem, clearCart } = useContext(CartContext);
-
+const Cart = ({ data, remove, clear }) => {
   return (
     <div className="cart">
-      {cart.map((item) => {
+      {data.map((cartItem) => {
         return (
           <>
-            <CartItem data={{ cart, removeItem }} />
-            <Button basic color="orange" onClick={clearCart}>
-              Vaciar
-            </Button>
+            <CartItem data={cartItem} remove={remove} />
           </>
         );
       })}
+      <Button basic color="orange" onClick={clear}>
+        Vaciar
+      </Button>
     </div>
   );
 };

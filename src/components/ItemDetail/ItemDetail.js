@@ -17,7 +17,7 @@ import img2 from "../../assets/itemExample2.jpg";
 import { CartContext } from "../../context/CartContext";
 
 export const ItemDetail = ({ data }) => {
-  const { cart, addToCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   // Estado y eventos de cantidad de items
   const [itemNumber, setItemNumber] = React.useState(0);
 

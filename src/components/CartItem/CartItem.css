@@ -1,4 +1,10 @@
 .cartItem {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1vh;
+  margin: 1vh;
+  border: 1px solid blue;
+  min-width: 20vw;
 }

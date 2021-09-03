@@ -14,12 +14,15 @@ import { CartContext } from "../../context/CartContext";
 export const CartWidget = () => {
   const { cart } = useContext(CartContext);
 
+  const cartTotal = cart.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0);
   return (
     <Link to="/cart">
       <div className="headerWidget">
         {/* <FontAwesomeIcon icon={faCartArrowDown} size="2x" />; */}
         <Icon name="cart" size="large" />
-        <p>{cart.length}</p>
+        <p>{cartTotal}</p>
       </div>
     </Link>
   );
