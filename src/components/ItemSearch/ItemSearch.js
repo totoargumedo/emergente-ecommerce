@@ -2,14 +2,16 @@ import React, { useState } from "react";
 
 // LIBRERIAS
 import "./ItemSearch.css";
-import { Input } from "semantic-ui-react";
+import { Input, Button } from "semantic-ui-react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+// COMPONENTES
 
 const ItemSearch = () => {
   const [searchValue, setSearchValue] = useState(``);
   const [searchData, setSearchData] = useState({});
 
-  console.log(searchData);
   const onChangeSearchValue = (e) => {
     setSearchValue(e.target.value);
   };
@@ -23,17 +25,17 @@ const ItemSearch = () => {
       );
       setSearchValue(``);
     }
-    console.log("se guardo", searchInputValue);
   };
 
   return (
     <div>
       <form onSubmit={submitSearchValue}>
-        <Input
-          icon="search"
-          placeholder="Find Monster"
-          onChange={onChangeSearchValue}
-        />
+        <Input placeholder="Find Monster" onChange={onChangeSearchValue} />
+        <Button icon="search"></Button>
+
+        <Link to={`/monster/${searchData.index}`}>
+          {/* <Item data={searchData} /> */}
+        </Link>
       </form>
     </div>
   );

@@ -13,23 +13,28 @@ import Contacto from "./pages/Contacto/Contacto";
 import { ItemDetailContainer } from "./pages/ItemDetailContainer/ItemDetailContainer";
 import CartContainer from "./pages/CartContainer/CartContainer";
 
+// PROVIDERS
+import { CartProvider } from "./context/CartContext";
+
 // Componentes
 import { NavBar } from "./components/NavBar/NavBar";
 
 export const App = () => {
   return (
-    <Router>
-      <div className="App">
-        <NavBar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/nosotros" component={Nosotros} />
-          <Route path="/tienda" component={Tienda} />
-          <Route path="/contacto" component={Contacto} />
-          <Route path="/monster/:index" component={ItemDetailContainer} />
-          <Route path="/cart" component={CartContainer} />
-        </Switch>
-      </div>
-    </Router>
+    <CartProvider>
+      <Router>
+        <div className="App">
+          <NavBar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/nosotros" component={Nosotros} />
+            <Route path="/tienda" component={Tienda} />
+            <Route path="/contacto" component={Contacto} />
+            <Route path="/monster/:index" component={ItemDetailContainer} />
+            <Route path="/cart" component={CartContainer} />
+          </Switch>
+        </div>
+      </Router>
+    </CartProvider>
   );
 };

@@ -6,7 +6,7 @@ import img2 from "../../assets/itemExample2.jpg";
 // LIBRERIAS
 import "./Item.css";
 
-const Item = ({ data, url }) => {
+const Item = ({ data }) => {
   const [imgExample, setImgExample] = useState(true);
 
   const handleThumbnail = () => {
