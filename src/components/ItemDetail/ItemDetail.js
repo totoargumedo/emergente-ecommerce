@@ -18,7 +18,6 @@ import { CartContext } from "../../context/CartContext";
 
 export const ItemDetail = ({ data }) => {
   const { cart, addToCart } = useContext(CartContext);
-  console.log(cart);
   // Estado y eventos de cantidad de items
   const [itemNumber, setItemNumber] = React.useState(0);
 

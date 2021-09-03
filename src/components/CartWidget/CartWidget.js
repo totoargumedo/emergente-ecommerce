@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import "./CartWidget.css";
 
 // LIBRERIAS
-
+import { Link } from "react-router-dom";
 import { Icon } from "semantic-ui-react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
@@ -15,11 +15,13 @@ export const CartWidget = () => {
   const { cart } = useContext(CartContext);
 
   return (
-    <div className="headerWidget">
-      {/* <FontAwesomeIcon icon={faCartArrowDown} size="2x" />; */}
-      <Icon name="cart" size="large" />
-      <p>{cart.length}</p>
-    </div>
+    <Link to="/cart">
+      <div className="headerWidget">
+        {/* <FontAwesomeIcon icon={faCartArrowDown} size="2x" />; */}
+        <Icon name="cart" size="large" />
+        <p>{cart.length}</p>
+      </div>
+    </Link>
   );
 };
 

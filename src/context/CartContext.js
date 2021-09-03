@@ -16,14 +16,14 @@ export const CartProvider = ({children}) =>{
         if (isInCart(item.index)){
             const newCart = cart.map((e) => {
                 if(e.index === item.index){
-                    return{e, quantity: e.quantity + quantity};
+                    return{...e, quantity: e.quantity + quantity};
                 } else {
                     return e;
                 }
             })
             setCart(newCart);
         } else{
-            setCart((prev)=> [prev, {item, quantity}]);
+            setCart((prev)=> [...prev, {...item, quantity}]);
         }
     };
 
