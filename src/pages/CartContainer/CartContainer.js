@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 // LIBRERIAS
 import "./CartContainer.css";
+import { Link } from "react-router-dom";
 
 // ASSETS
 import meme from "../../assets/meme1.jpg";
@@ -14,10 +15,12 @@ import Cart from "../../components/Cart/Cart";
 
 const CartContainer = () => {
   const { cart, removeItem, clearCart } = useContext(CartContext);
-  const [voidCart, setVoidCart] = useState(true);
+  const [voidCart, setVoidCart] = useState(false);
 
   useEffect(() => {
-    if (!cart.length) {
+    if (cart.length != 0) {
+      setVoidCart(true);
+    } else {
       setVoidCart(false);
     }
   });
@@ -25,9 +28,11 @@ const CartContainer = () => {
   return (
     <div>
       {voidCart ? (
-        <img src={meme} alt="No hay cart" className="meme" />
-      ) : (
         <Cart data={cart} remove={removeItem} clear={clearCart} />
+      ) : (
+        <Link to="/tienda">
+          <img src={meme} alt="No hay cart" className="meme" />
+        </Link>
       )}
     </div>
   );

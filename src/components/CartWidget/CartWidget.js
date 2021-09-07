@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 // STYLING
 import "./CartWidget.css";
@@ -13,17 +13,28 @@ import { CartContext } from "../../context/CartContext";
 
 export const CartWidget = () => {
   const { cart } = useContext(CartContext);
+  const [cartEmpty, setCartEmpty] = useState(false);
+
+  useEffect(() => {
+    if (cartTotal != 0) {
+      setCartEmpty(true);
+    } else {
+      setCartEmpty(false);
+    }
+  });
 
   const cartTotal = cart.reduce((acc, item) => {
     return acc + item.quantity;
   }, 0);
   return (
     <Link to="/cart">
-      <div className="headerWidget">
-        {/* <FontAwesomeIcon icon={faCartArrowDown} size="2x" />; */}
-        <Icon name="cart" size="large" />
-        <p>{cartTotal}</p>
-      </div>
+      {cartEmpty && (
+        <div className="headerWidget">
+          {/* <FontAwesomeIcon icon={faCartArrowDown} size="2x" />; */}
+          <Icon name="cart" size="large" />
+          <p>{cartTotal}</p>
+        </div>
+      )}
     </Link>
   );
 };
