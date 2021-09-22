@@ -3,6 +3,7 @@ import React from "react";
 // // LIBRERIAS
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+
 // import "semantic-ui-css/semantic.min.css";
 
 // PAGES
