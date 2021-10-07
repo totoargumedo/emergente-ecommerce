@@ -7,11 +7,6 @@ import { Link } from "react-router-dom";
 
 // COMPONENTES
 import { ItemCount } from "../ItemCount/ItemCount";
-import ItemOptions from "../ItemOptions/ItemOptions";
-
-// ASSETS
-import img1 from "../../assets/itemExample1.jpg";
-import img2 from "../../assets/itemExample2.jpg";
 
 // PROVIDER
 import { CartContext } from "../../context/CartContext";
@@ -20,7 +15,6 @@ export const ItemDetail = ({ data }) => {
   const { addToCart } = useContext(CartContext);
   // Estado y eventos de cantidad de items
   const [itemNumber, setItemNumber] = React.useState(0);
-
   const onAdd = () => {
     setItemNumber(itemNumber + 1);
   };
@@ -28,12 +22,6 @@ export const ItemDetail = ({ data }) => {
     if (itemNumber >= 1) {
       setItemNumber(itemNumber - 1);
     }
-  };
-  // Imagen fija del item (la api que uso no tiene imagenes asique improvise)
-  const [imgExample, setImgExample] = useState(true);
-
-  const handleThumbnail = () => {
-    setImgExample(!imgExample);
   };
   // Evento Terminar compra
   const [addItemsToCart, setAddItemsToCart] = useState(false);
@@ -89,13 +77,14 @@ export const ItemDetail = ({ data }) => {
       <Image
         floated="right"
         size="small"
-        src={imgExample ? img1 : img2}
-        onMouseEnter={handleThumbnail}
-        onMouseLeave={handleThumbnail}
+        src={
+          data.img
+            ? data.img
+            : "https://firebasestorage.googleapis.com/v0/b/emergente-ecommerce.appspot.com/o/Monsters%2Fdefault%20monster.jpg?alt=media&token=39bd69bb-7366-4d2c-a5ca-185264b9c8af"
+        }
       />
       <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
       <ItemCount add={onAdd} substract={onSubstract} quantity={itemNumber} />
-      <ItemOptions />
       {addItemsToCart && <h3>Se agregaron {itemNumber} unidades al carrito</h3>}
       <div className="itemDetailButtons">
         <Link to="/tienda">

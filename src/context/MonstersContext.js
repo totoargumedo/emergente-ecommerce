@@ -1,38 +1,41 @@
 import React, { useState, useEffect, createContext } from "react";
 
-// LIBRERIAS
-import { collection, getDocs } from "@firebase/firestore";
+// API Firestore
 import db from "../firebase/firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
 
-// Se crea context para monsters en firestore
+// creo contexto para Datos de Item - Monster
 export const MonstersContext = createContext();
 
-const MonstersProvider = (children) => {
-  // datos desde la coleccion monsters de firestore
+// componente Provider para Monsters
 
+const MonstersProvider = ({ children }) => {
+  // estado para monsters
   const [monsters, setMonsters] = useState([]);
 
-  console.log(monsters);
+  //   Pedido de listado a API en firebase
+  const getMonsters = async () => {
+    const monstersList = await getDocs(collection(db, "monsters"));
+    let monsterTempo = [];
 
+    monstersList.forEach((monster) => {
+      monsterTempo = [...monsterTempo, monster.data()];
+    });
+    setMonsters(monsterTempo);
+  };
+
+  const getSpecificMonster = (monsterForDetail) => {
+    let specificMonster = monsters.filter(
+      (monster) => monster.index === monsterForDetail
+    );
+    return specificMonster[0];
+  };
   useEffect(() => {
-    // consumir base de datos de firestore
-    const getDataFromFirebase = async () => {
-      // se especifica coleccion y se llama a db desde el modulo de configuracion que creamos
-      const datosMonsters = await getDocs(collection(db, "monsters"));
-      // creamos array temporal para recibir los objetos
-      const Temp = [];
-      // for each para recorrer los objetos del array recibido
-      datosMonsters.forEach((monster) => {
-        // los pusheamos dentro del array temporal
-        Temp.push({ ...monster.data(), id: monster.id });
-      });
-      setMonsters(Temp);
-    };
-    getDataFromFirebase();
+    getMonsters();
   }, []);
-
+  // componente provider
   return (
-    <MonstersContext.Provider value={{ monsters, setMonsters }}>
+    <MonstersContext.Provider value={{ monsters, getSpecificMonster }}>
       {children}
     </MonstersContext.Provider>
   );

@@ -1,15 +1,14 @@
 import React from "react";
 
 // COMPONENTES
-import { ItemList } from "../ItemList/ItemList";
+import ItemList from "../ItemList/ItemList";
 // LIBRERIAS
 import "./ItemListContainer.css";
 
-export const ItemListContainer = ({ hello }) => {
+export const ItemListContainer = ({ data }) => {
   return (
     <div className="listMain">
-      <h1 className="welcome">{hello}</h1>
-      <ItemList />
+      <ItemList data={data} />
     </div>
   );
 };

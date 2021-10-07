@@ -14,21 +14,31 @@ import { CartContext } from "../../context/CartContext";
 import Cart from "../../components/Cart/Cart";
 
 const CartContainer = () => {
-  const { cart, removeItem, clearCart } = useContext(CartContext);
+  const { cart, removeItem, clearCart, cartTotalExpCalculator, totalExp } =
+    useContext(CartContext);
   const [voidCart, setVoidCart] = useState(false);
 
-  useEffect(() => {
-    if (cart.length != 0) {
+  const hideCartWidget = () => {
+    if (cart.length !== 0) {
       setVoidCart(true);
     } else {
       setVoidCart(false);
     }
+  };
+  useEffect(() => {
+    hideCartWidget();
   });
 
   return (
     <div>
       {voidCart ? (
-        <Cart data={cart} remove={removeItem} clear={clearCart} />
+        <Cart
+          data={cart}
+          remove={removeItem}
+          clear={clearCart}
+          total={totalExp}
+          totalCalcutator={cartTotalExpCalculator}
+        />
       ) : (
         <Link to="/tienda">
           <img src={meme} alt="No hay cart" className="meme" />

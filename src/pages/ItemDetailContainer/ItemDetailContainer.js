@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 // LIBRERIAS
 import "./ItemDetailContainer.css";
-import axios from "axios";
+
+// Provider
+import { MonstersContext } from "../../context/MonstersContext";
 
 // COMPONENTES
 import { ItemDetail } from "../../components/ItemDetail/ItemDetail";
 
-export const ItemDetailContainer = ({ match }) => {
-  const apiDungeon = "https://www.dnd5eapi.co/api/monsters/";
+const ItemDetailContainer = ({ match }) => {
+  const { getSpecificMonster } = useContext(MonstersContext);
   const itemID = match.params.index;
   const [itemDetail, setItemDetail] = useState({});
-
   useEffect(() => {
-    axios
-      .get(apiDungeon + itemID)
-      .then((respuesta) => setItemDetail(respuesta.data));
-  }, [itemID]);
+    setItemDetail(getSpecificMonster(itemID));
+  }, [getSpecificMonster, itemID]);
 
   return (
     <div>
@@ -24,3 +23,5 @@ export const ItemDetailContainer = ({ match }) => {
     </div>
   );
 };
+
+export default ItemDetailContainer;

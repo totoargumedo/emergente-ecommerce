@@ -6,10 +6,12 @@ import "./Tienda.css";
 // COMPONENTES
 import { ItemListContainer } from "../../components/ItemListContainer/ItemListContainer";
 
-export const Tienda = () => {
+const Tienda = () => {
   return (
     <div>
-      <ItemListContainer hello="Welcome to the Store" />
+      <ItemListContainer />
     </div>
   );
 };
+
+export default Tienda;

@@ -1,31 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Card, Image } from "semantic-ui-react";
-import img1 from "../../assets/itemExample1.jpg";
-import img2 from "../../assets/itemExample2.jpg";
 
 // LIBRERIAS
 import "./Item.css";
 
 const Item = ({ data }) => {
-  const [imgExample, setImgExample] = useState(true);
-
-  const handleThumbnail = () => {
-    setImgExample(!imgExample);
-  };
-
   return (
     <Card className="Item">
       <Card.Content>
         <Image
           floated="right"
           size="small"
-          src={imgExample ? img1 : img2}
-          onMouseEnter={handleThumbnail}
-          onMouseLeave={handleThumbnail}
+          src={
+            data.img
+              ? data.img
+              : "https://firebasestorage.googleapis.com/v0/b/emergente-ecommerce.appspot.com/o/Monsters%2Fdefault%20monster.jpg?alt=media&token=39bd69bb-7366-4d2c-a5ca-185264b9c8af"
+          }
         />
         <Card.Header>{data.name}</Card.Header>
-        <Card.Meta>{data.index}</Card.Meta>
-        <Card.Description>{data.url}</Card.Description>
+        <Card.Meta>{data.type}</Card.Meta>
+        <Card.Description>
+          {data.description
+            ? data.description
+            : "We have not found a description in this monster database, so here you have the official intro for them. \n D&D monsters give your hero a vast array of challenges to overcome. The sinister mind flayer is waiting patiently to eat your brains, while the gelatinous cube shambles through dungeons digesting nearly everything in its path. There's always a new threat. "}
+        </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
@@ -39,13 +37,6 @@ const Item = ({ data }) => {
       </Card.Content>
     </Card>
   );
-};
-
-Item.defaultProps = {
-  data: {
-    name: "Loading...",
-    index: "Loading...",
-  },
 };
 
 export default Item;

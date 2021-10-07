@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 
 // LIBRERIAS
 import "./ItemList.css";
@@ -6,36 +6,27 @@ import { Link } from "react-router-dom";
 
 // COMPONENTES
 import Item from "../Item/Item";
-import { LoaderSpinner } from "../LoaderSpinner/LoaderSpinner";
 
-export const ItemList = () => {
-  const [items, setItems] = useState([]);
-  const apiDungeon = "https://www.dnd5eapi.co/api/monsters/";
-  const [gettingData, setGettingData] = useState(true);
+// PROVIDER
+import { MonstersContext } from "../../context/MonstersContext";
 
-  useEffect(() => {
-    fetch(apiDungeon)
-      .then((response) => response.json())
-      .then((respuesta) => setItems(respuesta.results));
-    setTimeout(() => {
-      setGettingData(false);
-    }, 1000);
-  }, []);
+const ItemList = () => {
+  // datos desde la coleccion monsters de firestore
+  const { monsters } = useContext(MonstersContext);
+
   return (
     <div>
-      {gettingData ? (
-        <LoaderSpinner />
-      ) : (
-        <div className="ItemList">
-          {items.map((item) => {
-            return (
-              <Link to={`/monster/${item.index}`}>
-                <Item key={item.index} data={item} />
-              </Link>
-            );
-          })}
-        </div>
-      )}
+      <div className="ItemList">
+        {monsters.map((monster) => {
+          return (
+            <Link to={`/${monster.type}/${monster.index}`}>
+              <Item key={monster.id} data={monster} />
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };
+
+export default ItemList;
