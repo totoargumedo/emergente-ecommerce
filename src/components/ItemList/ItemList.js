@@ -20,7 +20,7 @@ const ItemList = () => {
         {monsters.map((monster) => {
           return (
             <Link to={`/${monster.type}/${monster.index}`}>
-              <Item key={monster.id} data={monster} />
+              <Item key={monster.index} data={monster} />
             </Link>
           );
         })}

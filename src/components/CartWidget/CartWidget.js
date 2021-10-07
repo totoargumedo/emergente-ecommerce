@@ -16,12 +16,12 @@ export const CartWidget = () => {
   const [cartEmpty, setCartEmpty] = useState(false);
 
   useEffect(() => {
-    if (cartTotal != 0) {
+    if (cartTotal !== 0) {
       setCartEmpty(true);
     } else {
       setCartEmpty(false);
     }
-  });
+  }, []);
 
   const cartTotal = cart.reduce((acc, item) => {
     return acc + item.quantity;
